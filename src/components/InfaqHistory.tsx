@@ -1,8 +1,4 @@
-import { InfaqHistoryProps } from "../hooks/useInfaq";
-
-const formatRupiah = (angka: number) => {
-  return new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(angka);
-};
+import { InfaqHistoryProps,formatRupiah } from "../hooks/useInfaq";
 
 const InfaqHistory = ({infaqData,totalInfaq} : InfaqHistoryProps) => {
   return (

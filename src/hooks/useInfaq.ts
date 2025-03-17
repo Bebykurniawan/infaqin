@@ -7,9 +7,16 @@ export interface InfaqItem {
 }
 
 export interface InfaqHistoryProps {
-    infaqData: InfaqItem[];
-    totalInfaq: number;
-  }
+  infaqData: InfaqItem[];
+  totalInfaq: number;
+}
+
+export const formatRupiah = (angka: number) => {
+  return new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR",
+  }).format(angka);
+};
 
 const useInfaq = () => {
   const [infaqData, setInfaqData] = useState<InfaqItem[]>([]);
@@ -18,12 +25,16 @@ const useInfaq = () => {
 
   const addInfaq = (nominal: number) => {
     
-  const newInfaq: InfaqItem = { 
-    id: infaqData.length + 1, 
-    nominal: Number(nominal),
-    tanggal: new Date().toLocaleDateString("id-ID", { day: "2-digit", month: "long", year: "numeric" }) 
-  };
-  
+    const newInfaq: InfaqItem = {
+      id: infaqData.length + 1,
+      nominal: Number(nominal),
+      tanggal: new Date().toLocaleDateString("id-ID", {
+        day: "2-digit",
+        month: "long",
+        year: "numeric",
+      }),
+    };
+
     setInfaqData((infaqData) => [...infaqData, newInfaq]);
   };
 
